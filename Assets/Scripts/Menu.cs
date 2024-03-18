@@ -5,6 +5,8 @@ using UnityEngine;
 public class Menu : MonoBehaviour
 {
     public GameObject[] food;
+    int x; // active object
+    bool info;
 
     public void openPizza()
     {
@@ -13,6 +15,10 @@ public class Menu : MonoBehaviour
             food[i].gameObject.SetActive(false);
         }
         food[0].gameObject.SetActive(true);
+        if (info){
+            food[1].gameObject.SetActive(true);
+        }
+        x = 1;
     }
 
     public void openFrenchFries() 
@@ -21,7 +27,27 @@ public class Menu : MonoBehaviour
         {
             food[i].gameObject.SetActive(false);
         }
-        food[1].gameObject.SetActive(true);
+        food[2].gameObject.SetActive(true);
+        if (info){
+            food[3].gameObject.SetActive(true);
+        }
+        x = 3;
+    }
+
+    public void showInfo() 
+    {
+        if (info){
+            info = false;
+            food[x].gameObject.SetActive(false);
+        }
+        else if (!info){
+            info = true;
+            food[x].gameObject.SetActive(true);
+        }
+        else{
+            info = true;
+            food[x].gameObject.SetActive(true);
+        }
     }
 }
 
